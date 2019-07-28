@@ -1,0 +1,22 @@
+{
+  "builders": [
+    {
+      "type": "googlecompute",
+      "project_id": "banded-meridian-248107",
+      "zone": "australia-southeast1-b",
+      "machine_type": "g1-small",
+      "source_image_family": "ubuntu-1604-lts",
+      "image_name": "raddit-base-{{timestamp}}",
+      "image_family": "raddit-base",
+      "image_description": "Ubuntu 16.04 with Ruby, Bundler and MongoDB preinstalled",
+      "ssh_username": "ryan"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "{{template_dir}}/../scripts/configuration.sh",
+      "execute_command": "sudo {{.Path}}"
+    }
+  ]
+}
